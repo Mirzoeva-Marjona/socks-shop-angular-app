@@ -1,5 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {StorageService} from '../storage.service';
+import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +7,11 @@ import {StorageService} from '../storage.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() count = 0;
   @Output() clickOpenBasket = new EventEmitter();
 
-  constructor(storage: StorageService) {
-    this.count = storage.getCount();
+  constructor() {
   }
-  count = 0;
 
   ngOnInit(): void {
   }

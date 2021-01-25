@@ -26,6 +26,6 @@ export class CounterComponent implements OnInit {
   }
 
   public onChange(): void {
-    console.log(this.count);
+    this.changeCount.emit(!isNaN(Number(this.count)) ? Number(this.count) : 1);
   }
 }

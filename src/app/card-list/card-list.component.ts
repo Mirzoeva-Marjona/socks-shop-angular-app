@@ -10,6 +10,7 @@ import {StorageService} from '../storage.service';
 export class CardListComponent implements OnInit {
   private products: Product[] = [];
   @Output() showNotification = new EventEmitter();
+  @Output() addToBasketEvent = new EventEmitter();
   constructor(private storageService: StorageService) {
     this.products = storageService.loadProducts();
   }

@@ -6,7 +6,7 @@
     <div>{{purchase.name}}</div>
     <div>{{purchase.socksSize}}</div>
     <app-counter [count]="purchase.count" (changeCount)="updateBasketRow($event)"></app-counter>
-    <div>{{purchase.price * purchase.count}}</div>
+    <div>{{purchase.price | price: purchase.count | rub}}</div>
     <div (click)="deleteBasketRow()">
       <svg class="product-row__remove-button" width="30" height="30" viewBox="0 0 30 30" fill="none"
            xmlns="http://www.w3.org/2000/svg">

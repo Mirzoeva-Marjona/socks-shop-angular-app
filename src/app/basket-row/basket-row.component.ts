@@ -1,6 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Purchase} from '../purchase';
-import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'app-basket-row',
@@ -8,8 +7,9 @@ import {StorageService} from '../storage.service';
   styleUrls: ['./basket-row.component.less']
 })
 export class BasketRowComponent implements OnInit {
-  @Input() public purchase: Purchase = {};
-  constructor() { }
+  @Input() public purchase: Purchase;
+  constructor() {
+  }
 
   @Output() public deleteRow = new EventEmitter<Purchase>();
   @Output() public productRowChanged = new EventEmitter<Purchase>();

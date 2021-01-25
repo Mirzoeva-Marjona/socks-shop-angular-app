@@ -1,5 +1,5 @@
 <section class="product-cards-container _frame">
   <div *ngFor="let item of products">
-    <app-product-card [product]="item" (showNotification)="showNotification.emit()"></app-product-card>
+    <app-product-card [product]="item" (showNotification)="showNotification.emit()" (addToBasketEvent)="addToBasketEvent.emit()"></app-product-card>
   </div>
 </section>

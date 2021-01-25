@@ -14,6 +14,8 @@ import { CounterComponent } from './counter/counter.component';
 import { LoaderComponent } from './loader/loader.component';
 import { NotificationComponent } from './notification/notification.component';
 import {FormsModule} from '@angular/forms';
+import {RowPricePipe} from './basket-row/row-price.pipe';
+import {RubPipe} from './basket/rub.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {FormsModule} from '@angular/forms';
     BasketRowComponent,
     CounterComponent,
     LoaderComponent,
-    NotificationComponent
+    NotificationComponent,
+    RowPricePipe,
+    RubPipe,
   ],
     imports: [
         BrowserModule,

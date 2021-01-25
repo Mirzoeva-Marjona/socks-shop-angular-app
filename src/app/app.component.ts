@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {StorageService} from './storage.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,12 @@ export class AppComponent {
   isBasketVisible = false;
   isNotificationVisible = false;
   isLoaderVisible = false;
+  count = 0;
+
+  constructor(private storage: StorageService) {
+      this.count = storage.getCount();
+  }
+
   public showBasket(): void {
     (async () => {
       this.isLoaderVisible = true;
@@ -17,6 +24,11 @@ export class AppComponent {
       this.isBasketVisible = true;
     })();
   }
+
+  public basketUpdated(): void {
+    this.count = this.storage.getCount();
+  }
+
   private delay(ms: number): any {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }

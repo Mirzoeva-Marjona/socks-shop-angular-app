@@ -1,5 +1,5 @@
 <div id="basketComponent">
-  <div class="modal _basket _scroll js-basket js-hidden">
+  <div class="modal _basket _scroll js-hidden">
     <div class="basket-content">
       <div class="basket-content__header">
         <div data-modal="open-basket" class="basket-content__header-title _font">
@@ -19,7 +19,7 @@
         <app-basket-row [purchase]="item" (deleteRow)="deleteBasketRow($event)" (productRowChanged)="productRowChanged($event)"></app-basket-row>
       </div>
       <div class="basket-content__total _font">
-        <span class="js-basket-total"></span>
+        <span>{{totalPrice | rub}}</span>
       </div>
     </div>
   </div>
