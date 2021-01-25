@@ -13,6 +13,7 @@ import { BasketRowComponent } from './basket-row/basket-row.component';
 import { CounterComponent } from './counter/counter.component';
 import { LoaderComponent } from './loader/loader.component';
 import { NotificationComponent } from './notification/notification.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,10 @@ import { NotificationComponent } from './notification/notification.component';
     LoaderComponent,
     NotificationComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Product} from '../product';
+import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'app-product-card',
@@ -8,9 +9,19 @@ import {Product} from '../product';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: Product;
-  constructor() { }
+  selectSocksSize: string = '';
+  constructor(private storage: StorageService) { }
 
+  @Output() showNotification = new EventEmitter();
   ngOnInit(): void {
   }
 
+  clickInBasket(): void {
+    if (this.selectSocksSize != '') {
+      this.storage.addPurchase(this.product, this.selectSocksSize);
+    } else {
+      this.showNotification.emit();
+    }
+
+  }
 }

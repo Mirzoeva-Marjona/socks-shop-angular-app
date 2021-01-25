@@ -1,13 +1,13 @@
 <body class="body">
-<app-header (clickOpenBasket)="isBasketVisible=true"></app-header>
+<app-header (clickOpenBasket)="showBasket()"></app-header>
 <main class="main">
   <app-banner></app-banner>
   <app-menu></app-menu>
-  <app-card-list></app-card-list>
-  <app-notification></app-notification>
-  <app-loader></app-loader>
+  <app-card-list (showNotification)="isNotificationVisible = true"></app-card-list>
+  <app-notification *ngIf="isNotificationVisible"></app-notification>
+  <app-loader *ngIf="isLoaderVisible"></app-loader>
   <app-basket (clickCloseBasket)="isBasketVisible=false" *ngIf="isBasketVisible"></app-basket>
-  <div class="overlay js-overlay" *ngIf="isBasketVisible"></div>
+  <div class="overlay js-overlay" (click)="isBasketVisible = false; isNotificationVisible = false" *ngIf="isBasketVisible || isNotificationVisible || isLoaderVisible"></div>
 </main>
 <app-footer></app-footer>
 </body>

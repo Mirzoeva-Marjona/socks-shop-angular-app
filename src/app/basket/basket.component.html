@@ -15,8 +15,8 @@
           </svg>
         </div>
       </div>
-      <div>
-        <app-basket-row [purchase]="{name: 'fdgdfg', price: 233, count: 5}"></app-basket-row>
+      <div *ngFor="let item of purchase">
+        <app-basket-row [purchase]="item" (deleteRow)="deleteBasketRow($event)" (productRowChanged)="productRowChanged($event)"></app-basket-row>
       </div>
       <div class="basket-content__total _font">
         <span class="js-basket-total"></span>

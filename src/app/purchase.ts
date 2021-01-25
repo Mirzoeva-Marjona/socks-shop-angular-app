@@ -5,4 +5,7 @@ export class Purchase extends Product {
               public price: number, public socksSize: string, public count: number) {
     super(id, img, name, price);
   }
+  public purchaseId(): string {
+    return this.id.toString() + '_' + this.socksSize;
+  }
 }
