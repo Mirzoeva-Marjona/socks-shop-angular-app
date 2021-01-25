@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-basket',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
+  @Output() clickCloseBasket = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  closeBasketClick(): void {
+    this.clickCloseBasket.emit();
+  }
 }

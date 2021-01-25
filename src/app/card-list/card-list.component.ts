@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Product} from '../product';
+import {StorageService} from '../storage.service';
 
 @Component({
   selector: 'app-card-list',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.less']
 })
 export class CardListComponent implements OnInit {
-
-  constructor() { }
+  private products: Product[];
+  constructor(private storageService: StorageService) {
+    this.products = storageService.loadProducts();
+  }
 
   ngOnInit(): void {
   }

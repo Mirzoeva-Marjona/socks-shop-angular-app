@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {Purchase} from '../purchase';
 
 @Component({
   selector: 'app-basket-row',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basket-row.component.less']
 })
 export class BasketRowComponent implements OnInit {
-
+  @Input() purchase: Purchase;
   constructor() { }
 
   ngOnInit(): void {
   }
+  
 
 }
