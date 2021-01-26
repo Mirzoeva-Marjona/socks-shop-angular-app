@@ -1,0 +1,31 @@
+<meta charset=utf-8>
+<div>
+  <div>
+    <div>
+      <img class="item-image__photo" src="{{product.img}}" alt="Изображение не найдено">
+    </div>
+    <div>
+      <span>Описание товара:</span>
+      <div class="product-card__name _card-font">
+        <span>{{product.name}}</span>
+      </div>
+      <!--      <div>-->
+      <!--        <span>Пол:</span>-->
+      <!--      </div>-->
+      <div class="product-card__socks-size">
+        <span>Выберите размер</span>
+        <select class="product-card__socks-size _option-text" [(ngModel)]="selectSocksSize">
+          <option>39-40</option>
+          <option>41-42</option>
+          <option>43-44</option>
+        </select>
+      </div>
+      <div>
+        <span>Цена товара:</span>
+        <div>{{product.price | rub}}</div>
+      </div>
+      <div class="product-card__in-basket-button _font" (click)="clickInBasket()">
+        <span>В корзину</span>
+      </div>
+    </div>
+  </div>

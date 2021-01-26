@@ -11,8 +11,8 @@ export class BasketComponent implements OnInit {
 
   @Output() clickCloseBasket = new EventEmitter();
   @Output() basketUpdated = new EventEmitter();
-  private purchase: Purchase[] = [];
-  private totalPrice = 0;
+  purchase: Purchase[] = [];
+  totalPrice = 0;
 
   constructor(private storage: StorageService) {
     this.purchase = this.storage.loadPurchase();

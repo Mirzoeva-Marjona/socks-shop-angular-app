@@ -4,7 +4,7 @@
       <img class="product-row__image" src="{{purchase.img}}" alt="Изображение не найдено">
     </div>
     <div>{{purchase.name}}</div>
-    <div>{{purchase.socksSize}}</div>
+     <div>{{purchase.socksSize}}</div>
     <app-counter [count]="purchase.count" (changeCount)="updateBasketRow($event)"></app-counter>
     <div>{{purchase.price | price: purchase.count | rub}}</div>
     <div (click)="deleteBasketRow()">

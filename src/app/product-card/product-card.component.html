@@ -1,6 +1,6 @@
 <div id="productCard">
   <div class="product-card _border">
-    <div class="item-image">
+    <div class="item-image" [routerLink]="['product', product.id]">
       <img class="item-image__photo" src="{{product.img}}" alt="Изображение не найдено">
     </div>
     <div class="product-card__name _card-font">

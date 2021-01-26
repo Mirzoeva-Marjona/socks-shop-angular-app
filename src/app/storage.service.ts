@@ -62,6 +62,7 @@ export class StorageService {
 
   constructor() {
     this.loadPurchase();
+    this.logOut();
   }
 
   loadProducts(): Product[] {
@@ -80,6 +81,10 @@ export class StorageService {
       this.purchase.set(purchaseId, newPurchase);
     }
     this.savePurchase();
+  }
+
+  loadProduct(id: number): Product[] {
+    return this.products.filter(item => item.id === Number(id));
   }
 
   deleteBasketRow(purchaseId: string): void {
@@ -113,5 +118,18 @@ export class StorageService {
       count += v.count;
     });
     return count;
+  }
+
+  logIn(): void {
+    localStorage.setItem('isAuthenticated', 'true');
+  }
+
+  logOut(): void {
+    localStorage.setItem('isAuthenticated', 'false');
+  }
+
+  isAuthenticated(): boolean {
+    let value = localStorage.getItem('isAuthenticated');
+    return value === 'true';
   }
 }

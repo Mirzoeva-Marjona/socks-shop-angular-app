@@ -1,4 +1,6 @@
-import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {StorageService} from '../storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +9,23 @@ import {Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() count = 0;
+  @Input() count = '0';
   @Output() clickOpenBasket = new EventEmitter();
 
-  constructor() {
+  isAuthenticated = false;
+
+  constructor(private storage: StorageService, private router: Router) {
+    this.isAuthenticated = storage.isAuthenticated();
+  }
+
+  logInLogOut(): void {
+    if (this.storage.isAuthenticated()) {
+      this.storage.logOut();
+      this.router.navigate(['/']);
+    } else {
+      this.storage.logIn();
+    }
+    this.isAuthenticated = this.storage.isAuthenticated();
   }
 
   ngOnInit(): void {
