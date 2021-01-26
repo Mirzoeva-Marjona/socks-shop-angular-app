@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../product';
 import {StorageService} from '../storage.service';
+import {EventService} from '../event.service';
 
 @Component({
   selector: 'app-product-card',
@@ -8,24 +9,22 @@ import {StorageService} from '../storage.service';
   styleUrls: ['./product-card.component.less']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product: Product;
-  @Output() showNotification = new EventEmitter();
-  @Output() addToBasketEvent = new EventEmitter();
+  @Input() product: Product = new Product(0, '', '', 0);
 
   selectSocksSize: string = '';
 
-  constructor(private storage: StorageService) {
+  constructor(private storage: StorageService, private eventService: EventService) {
   }
 
   ngOnInit(): void {
   }
 
   clickInBasket(): void {
-    if (this.selectSocksSize != '') {
+    if (this.selectSocksSize !== '') {
       this.storage.addPurchase(this.product, this.selectSocksSize);
-      this.addToBasketEvent.emit();
+      this.eventService.announceAddToBasketEvent();
     } else {
-      this.showNotification.emit();
+      this.eventService.announceShowNotification();
     }
   }
 }

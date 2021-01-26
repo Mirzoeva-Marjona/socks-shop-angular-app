@@ -3,11 +3,14 @@
 <main class="main">
   <app-banner></app-banner>
   <app-menu></app-menu>
-  <app-card-list (showNotification)="isNotificationVisible = true" (addToBasketEvent)="basketUpdated()"></app-card-list>
+  <router-outlet></router-outlet>
+  <!--  <app-card-list (showNotification)="isNotificationVisible = true" (addToBasketEvent)="basketUpdated()"></app-card-list>-->
   <app-notification *ngIf="isNotificationVisible"></app-notification>
   <app-loader *ngIf="isLoaderVisible"></app-loader>
-  <app-basket (clickCloseBasket)="isBasketVisible=false" *ngIf="isBasketVisible" (basketUpdated)="basketUpdated()"></app-basket>
-  <div class="overlay js-overlay" (click)="isBasketVisible = false; isNotificationVisible = false" *ngIf="isBasketVisible || isNotificationVisible || isLoaderVisible"></div>
+  <app-basket (clickCloseBasket)="isBasketVisible=false" *ngIf="isBasketVisible"
+              (basketUpdated)="basketUpdated()"></app-basket>
+  <div class="overlay js-overlay" (click)="isBasketVisible = false; isNotificationVisible = false"
+       *ngIf="isBasketVisible || isNotificationVisible || isLoaderVisible"></div>
 </main>
 <app-footer></app-footer>
 </body>

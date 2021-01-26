@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../product';
 import {StorageService} from '../storage.service';
 
@@ -8,9 +8,7 @@ import {StorageService} from '../storage.service';
   styleUrls: ['./card-list.component.less']
 })
 export class CardListComponent implements OnInit {
-  private products: Product[] = [];
-  @Output() showNotification = new EventEmitter();
-  @Output() addToBasketEvent = new EventEmitter();
+  products: Product[] = [];
   constructor(private storageService: StorageService) {
     this.products = storageService.loadProducts();
   }

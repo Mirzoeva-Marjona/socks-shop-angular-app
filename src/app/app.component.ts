@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {StorageService} from './storage.service';
+import {EventService} from './event.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,18 @@ export class AppComponent {
   isLoaderVisible = false;
   count = 0;
 
-  constructor(private storage: StorageService) {
-      this.count = storage.getCount();
+  constructor(private storage: StorageService, private eventService: EventService) {
+    this.count = storage.getCount();
+    // @ts-ignore
+    eventService.notificationShowed$._subscribe(() => {
+        this.isNotificationVisible = true;
+      }
+    );
+    // @ts-ignore
+    eventService.addedToBasket$._subscribe(() => {
+        this.basketUpdated();
+      }
+    );
   }
 
   public showBasket(): void {
@@ -30,7 +41,7 @@ export class AppComponent {
   }
 
   private delay(ms: number): any {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 
