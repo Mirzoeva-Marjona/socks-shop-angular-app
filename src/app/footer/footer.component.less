@@ -1,11 +1,10 @@
-
 .footer {
   height: 420px;
   flex-shrink: 0;
 }
 
 .footer._background {
-  background: url("../../assets/footer.png");
+  background: url('../../assets/footer.png');
 }
 
 .footer__info-box {
@@ -78,4 +77,16 @@
 
 .footer__social-media-icon:active {
   box-shadow: 0 0 15px rgba(10, 10, 10, 0.5);
+}
+
+@media (max-width: 639px) {
+  .footer__info-box {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+            "zero"
+            "first_"
+            "second"
+            "footer__social-media-container"
+            "third"
+  }
 }

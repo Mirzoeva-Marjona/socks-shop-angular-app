@@ -72,7 +72,9 @@ export class StorageService {
     const purchaseId = product.id.toString() + '_' + socksSize;
     if (this.purchase.has(purchaseId)) {
       const purchaseRow = this.purchase.get(purchaseId);
-      purchaseRow.count += 1;
+      if (purchaseRow !== undefined) {
+        purchaseRow.count += 1;
+      }
     } else {
       const newPurchase = new Purchase(product.id, product.img, product.name, product.price, socksSize, 1);
       this.purchase.set(purchaseId, newPurchase);

@@ -106,3 +106,39 @@
   font-size: 36px;
   line-height: 70px;
 }
+
+@media (max-width: 639px) {
+  .menu-button {
+    flex: 0 0 100%;
+  }
+
+  .button-holder {
+    display: none;
+  }
+
+  .menu__burger-button {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .menu-button {
+    flex: 0 0 50%;
+  }
+
+  .button-holder._frame {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .menu-button {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .menu-button {
+    flex: 0 0 25%;
+  }
+}
