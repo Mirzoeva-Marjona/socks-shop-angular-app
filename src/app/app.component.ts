@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {StorageService} from './storage.service';
-import {EventService} from './event.service';
+import {EventService} from './services/event.service';
+import {PurchaseService} from './services/purchase.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +8,13 @@ import {EventService} from './event.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  isBasketVisible = false;
-  isNotificationVisible = false;
-  isLoaderVisible = false;
-  count = 0;
+  public isBasketVisible = false;
+  public isNotificationVisible = false;
+  public isLoaderVisible = false;
+  public count = 0;
 
-  constructor(private storage: StorageService, private eventService: EventService) {
-    this.count = storage.getCount();
+  constructor(private purchaseService: PurchaseService, private eventService: EventService) {
+    this.count = this.purchaseService.getCount();
     // @ts-ignore
     eventService.notificationShowed$._subscribe(() => {
         this.isNotificationVisible = true;
@@ -37,7 +37,7 @@ export class AppComponent {
   }
 
   public basketUpdated(): void {
-    this.count = this.storage.getCount();
+    this.count = this.purchaseService.getCount();
   }
 
   private delay(ms: number): any {
