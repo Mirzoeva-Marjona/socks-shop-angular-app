@@ -21,7 +21,7 @@ export class PurchaseService {
         purchaseRow.count += 1;
       }
     } else {
-      const newPurchase = new Purchase(product.id, product.img, product.name, product.price, socksSize, 1);
+      const newPurchase = new Purchase(product.id, product.img, product.sex, product.name, product.price, socksSize, 1);
       this.purchase.set(purchaseId, newPurchase);
     }
     this.savePurchase();

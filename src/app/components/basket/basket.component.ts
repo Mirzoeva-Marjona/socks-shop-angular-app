@@ -32,7 +32,7 @@ export class BasketComponent implements OnInit {
     this.update();
   }
 
-  private productRowChanged(purchase: Purchase): void {
+  public productRowChanged(purchase: Purchase): void {
     this.purchaseService.updatePurchase(purchase);
     this.update();
   }

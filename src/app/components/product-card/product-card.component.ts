@@ -9,7 +9,7 @@ import {PurchaseService} from '../../services/purchase.service';
   styleUrls: ['./product-card.component.less']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() public product: Product = new Product(0, '', '', 0);
+  @Input() public product: Product = new Product(0, '', '', '', 0);
 
   public selectSocksSize: string = '';
 
