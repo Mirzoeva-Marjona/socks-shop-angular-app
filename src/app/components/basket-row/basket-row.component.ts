@@ -7,7 +7,7 @@ import {Purchase} from '../../models/purchase';
   styleUrls: ['./basket-row.component.less']
 })
 export class BasketRowComponent implements OnInit {
-  @Input() public purchase: Purchase = new Purchase(0, '', '', 0, '', 0);
+  @Input() public purchase: Purchase = new Purchase(0, '', '', '', 0, '', 0);
   constructor() {
   }
 

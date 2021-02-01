@@ -11,7 +11,7 @@ import {PurchaseService} from '../../services/purchase.service';
   styleUrls: ['./product-details.component.less']
 })
 export class ProductDetailsComponent implements OnInit {
-  public product = new Product(0, '', '', 0);
+  public product = new Product(0, '', '', '', 0);
   public selectSocksSize = '';
 
   constructor(private activateRoute: ActivatedRoute, private productService: ProductService,
