@@ -2,18 +2,18 @@
 <div>
   <div>
     <div>
-      <img class="item-image__photo" src="{{ (product$ | async)?.img }}" alt="Изображение не найдено">
+      <img class="item-image__photo" src="{{product.img}}" alt="Изображение не найдено">
     </div>
     <div>
       <span>Описание товара:</span>
       <div class="product-card__name _card-font">
-        <span>{{ (product$ | async)?.name }}</span>
+        <span>{{product.name}}</span>
       </div>
     </div>
     <div>
       <span>Пол:</span>
       <div class="product-card__name _card-font">
-        <span>{{ (product$ | async)?.sex }}</span>
+        <span>{{product.sex}}</span>
       </div>
     </div>
     <div class="product-card__socks-size">
@@ -26,7 +26,7 @@
     </div>
     <div>
       <span>Цена товара:</span>
-      <div>{{ (product$ | async)?.price }}</div>
+      <div>{{product.price | rub}}</div>
     </div>
     <div class="product-card__in-basket-button _font" (click)="clickInBasket()">
       <span>В корзину</span>
