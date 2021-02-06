@@ -21,6 +21,7 @@ import {PageNotFoundComponent} from './components/page-not-found/page-not-found.
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserGuard} from './guards/user.guard';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: CardListComponent},
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     imports: [
       BrowserModule,
       FormsModule,
+      HttpClientModule,
       RouterModule.forRoot(appRoutes)
     ],
   providers: [],
