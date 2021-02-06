@@ -1,20 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../models/product';
-import {products} from '../mocks/mock';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {filter, take} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  public getProducts(): Product[] {
-    return products;
+  public getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>('/api/products');
   }
 
-  public getProduct(id: number): Product[] {
-    return products.filter(item => item.id === Number(id));
+  public getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>('/api/products/' + id)
+      .pipe(take(1),
+        // for example
+        filter(product => true));
   }
 }
