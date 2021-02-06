@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script>
+        const HOST = 'http://localhost:3000';
+
+        function removeProduct(id) {
+            console.log(id);
+            fetch(HOST + '/api/products/' + id, {method: 'DELETE'})
+                .then((response) => {
+                    document.location.reload();
+                })
+                .catch((error) => console.error(`Deletion was interrupted by an error: ${error}`))
+        }
+    </script>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Products</a>
+        <ul>
+            <li>
+                <a class="nav-link" href="/">Products</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/create">Create product</a>
+            </li>
+        </ul>
+    </nav>
+</header>

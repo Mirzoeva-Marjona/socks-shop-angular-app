@@ -1,24 +1,29 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private showNotification = new Subject();
-  private addToBasketEvent = new Subject();
-
-  notificationShowed$ = this.showNotification.asObservable();
-  addedToBasket$ = this.addToBasketEvent.asObservable();
+  private showNotification$ = new Subject<void>();
+  private addToBasketEvent$ = new Subject<void>();
 
   constructor() {
   }
 
-  announceShowNotification(): void {
-    this.showNotification.next();
+  public getNotification(): Observable<void> {
+    return this.showNotification$.asObservable();
   }
 
-  announceAddToBasketEvent(): void {
-    this.addToBasketEvent.next();
+  public getAddedToBasket(): Observable<void> {
+    return this.addToBasketEvent$.asObservable();
+  }
+
+  public announceShowNotification(): void {
+    this.showNotification$.next();
+  }
+
+  public announceAddToBasketEvent(): void {
+    this.addToBasketEvent$.next();
   }
 }

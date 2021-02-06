@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
 import {ProductService} from '../../services/product.service';
-import {Subject, Subscription} from 'rxjs';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-card-list',
@@ -10,16 +11,18 @@ import {Subject, Subscription} from 'rxjs';
 })
 export class CardListComponent implements OnInit, OnDestroy {
   public products$: Subject<Product[]> = new Subject<Product[]>();
-  private subscription$: Subscription = new Subscription();
+  private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    this.subscription$ = this.productService.getProducts().subscribe(products => this.products$.next(products));
+    this.productService.getProducts()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(products => this.products$.next(products));
   }
 
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.unsubscribe$.next();
   }
 }
