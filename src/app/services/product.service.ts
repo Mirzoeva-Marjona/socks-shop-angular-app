@@ -19,4 +19,14 @@ export class ProductService {
     return this.http.get<Product>('/api/products/' + id)
       .toPromise();
   }
+
+  public addProduct(product: Product): Observable<any> {
+    const body = {
+      name: product.name,
+      img: product.img,
+      sex: product.sex,
+      price: product.price
+    };
+    return this.http.post('/api/products/', body);
+  }
 }
