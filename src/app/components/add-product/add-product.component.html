@@ -1,0 +1,54 @@
+<form name="product" [formGroup]="productForm">
+  <div class="form-group">
+    <label for="productName">Название товара</label>
+    <input type="text" formControlName="name" name="name" class="form-control" id="productName"
+           placeholder="Название товара"/>
+    <div *ngIf="productForm.get('name')?.errors?.required">
+      <span>Заполните поле</span>
+    </div>
+    <div *ngIf="productForm.get('name')?.errors?.minlength">
+      <span>Слишком короткое название</span>
+    </div>
+    <div *ngIf="productForm.get('name')?.errors?.maxlength">
+      <span>Слишком длинное название</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="productImg">Ссылка на картинку товара</label>
+    <input type="text" formControlName="img" name="img" class="form-control" id="productImg"
+           placeholder="Ссылка на картинку товара"/>
+    <div *ngIf="productForm.get('img')?.errors?.required">
+      <span>Заполните поле</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="productSex">Категория</label>
+    <input type="text" formControlName="sex" name="sex" class="form-control" id="productSex" placeholder="Категория"/>
+    <div *ngIf="productForm.get('sex')?.errors?.required">
+      <span>Заполните поле</span>
+    </div>
+    <div *ngIf="productForm.get('sex')?.errors?.minlength">
+      <span>Слишком короткое название</span>
+    </div>
+    <div *ngIf="productForm.get('sex')?.errors?.maxlength">
+      <span>Слишком длинное название</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="productPrice">Цена товара</label>
+    <input type="text" formControlName="price" name="price" class="form-control" id="productPrice"
+           placeholder="Цена товара"/>
+    <div *ngIf="productForm.get('price')?.errors?.required">
+      <span>Заполните поле</span>
+    </div>
+    <div *ngIf="productForm.get('price')?.errors?.min">
+      <span>Слишком низкая цена</span>
+    </div>
+    <div *ngIf="productForm.get('price')?.errors?.max">
+      <span>Слишком высокая цена</span>
+    </div>
+  </div>
+  <button type="submit" class="btn" (click)="addProduct()" [disabled]="productForm.invalid"
+          [ngClass]="productForm.valid ? 'btn-success' : 'btn-danger'">Submit
+  </button>
+</form>

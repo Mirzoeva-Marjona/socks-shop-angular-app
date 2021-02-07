@@ -14,7 +14,7 @@ import {BasketRowComponent} from './components/basket-row/basket-row.component';
 import {CounterComponent} from './components/counter/counter.component';
 import {LoaderComponent} from './components/loader/loader.component';
 import {NotificationComponent} from './components/notification/notification.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RowPricePipe} from './pipes/row-price.pipe';
 import {RubPipe} from './pipes/rub.pipe';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
@@ -22,11 +22,13 @@ import {ProductDetailsComponent} from './components/product-details/product-deta
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
 import {UserGuard} from './guards/user.guard';
 import {HttpClientModule} from '@angular/common/http';
+import {AddProductComponent} from './components/add-product/add-product.component';
 
 const appRoutes: Routes = [
   {path: '', component: CardListComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'profile', component: UserProfileComponent, canActivate: [UserGuard]},
+  {path: 'admin/addProduct', component: AddProductComponent, canActivate: [UserGuard]},
   {path: '**', component: PageNotFoundComponent},
 ];
 
@@ -49,14 +51,17 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     ProductDetailsComponent,
     UserProfileComponent,
+    AddProductComponent,
   ],
-    imports: [
-      BrowserModule,
-      FormsModule,
-      HttpClientModule,
-      RouterModule.forRoot(appRoutes)
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
